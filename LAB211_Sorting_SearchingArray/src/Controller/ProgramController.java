@@ -20,6 +20,7 @@ public class ProgramController {
     BinarySearch binarySearch = new BinarySearch();
 
     public void generateArray() {
+        isSorted = false;
         integerArrayList.clear();
         int number = getNumber();
         Integer[] list = randomValue(number);

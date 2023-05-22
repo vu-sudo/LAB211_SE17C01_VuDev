@@ -6,7 +6,7 @@ public class Student {
     private String studentId;
     private String studentName;
     private Integer semester;
-    private ArrayList<String> courseName = null;
+    private ArrayList<String> courseName;
     private Integer totalCourse;
     
     public String getStudentId() {

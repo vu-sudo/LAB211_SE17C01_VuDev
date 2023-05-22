@@ -54,6 +54,21 @@ public class InputFunctions {
         } while(!validator.validatePattern(resultString, "^(Java|\\.Net|C\\/C\\+\\+)$"));
         return resultString;
    }
+   public String inputCourse(String msg, Student student) {
+          boolean codeDuplicated = false;
+          String resultString;
+          do {
+               System.out.print(msg);
+               resultString = input.nextLine().trim();
+               codeDuplicated = validator.isDuplicatedValueInArray(resultString, student.getCourseName());
+               System.out.println(codeDuplicated);
+               if (codeDuplicated) {
+                       System.out.println("ID is duplicated");
+                  }
+           } while (codeDuplicated == true || resultString.length() == 0 || !validator.validatePattern(resultString, "^(Java|\\.Net|C\\/C\\+\\+)$"));
+   
+           return resultString;
+   }
 
    public Integer inputNumber(String msg) {
         int number = 0;

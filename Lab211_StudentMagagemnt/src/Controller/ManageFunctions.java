@@ -125,7 +125,7 @@ public class ManageFunctions {
                                 switch (number) {
                                     case 1:
                                         String newCourse = inputtFunctions.inputCourse("Old course: "
-                                                + student.getCourseName() + ", New course (Java, .Net, C++): ");
+                                        + student.getCourseName() + ", New course (Java, .Net, C++): ", student);
                                         student.addCourse(newCourse);
                                         student.calculateTotalOfCourse();
                                         break;

@@ -1,6 +1,6 @@
-D1;Phan Van A;Java, .Net, C/C++;2
-D2;Nguyen Hoang B;.Net, C/C++;1
-D3;Tran Huu C;Java, C/C++;2
-D4;Lai Van D;Java, .Net;1
-D5;Vo Van E;.Net, C/C++;2
+D1;Phan Van A;Java,.Net,C/C++;2
+D2;Nguyen Hoang B;.Net,C/C++;1
+D3;Tran Huu C;Java,C/C++;2
+D4;Lai Van D;Java,.Net;1
+D5;Vo Van E;.Net,C/C++;2
 D6;Hoang Van F;C/C++;1

@@ -27,9 +27,6 @@ public class Validation {
     public String searchInArray(String string, ArrayList<String> checkArrayList) {
         string = string.trim();
         for(String str: checkArrayList) {
-            System.out.println(checkArrayList);
-            System.out.println(str);
-            System.out.println(string);
             if(str.equals(string)) {
                 return str;
             }

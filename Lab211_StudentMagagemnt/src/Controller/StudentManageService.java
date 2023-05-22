@@ -10,15 +10,12 @@ public class StudentManageService {
     private ManageFunctions manageFunctions = new ManageFunctions();
     private InputFunctions inputFunctions = new InputFunctions();
     
-    public void loadDataFromFile() {
-        String path = Paths.get("").toAbsolutePath().toString();
-        manageFunctions.loadData(path + "/src/Controller/studentSource.txt", studentsList);
-        System.out.println("LOAD FILE SUCESSFULLY!");
-        manageFunctions.displayStudentsList("LIST OF STUDENTS: ", studentsList);
-    }
 
     public ArrayList<Student> returnStudentsList() {
         return studentsList;
+    }
+    public void handleLoadDataAndSaveData() {
+        manageFunctions.loadDataAndSaveData(studentsList);
     }
     public void handleAddStudents() {
         manageFunctions.addStudentList(studentsList);
@@ -40,4 +37,5 @@ public class StudentManageService {
     public void report() {
         manageFunctions.displayStudentsReport("REPORT LIST OF STUDENTS: ", studentsList);
     }
+
 }

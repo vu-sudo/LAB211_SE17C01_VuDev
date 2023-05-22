@@ -54,6 +54,7 @@ public class InputFunctions {
         } while(!validator.validatePattern(resultString, "^(Java|\\.Net|C\\/C\\+\\+)$"));
         return resultString;
    }
+   
    public String inputCourse(String msg, Student student) {
           boolean codeDuplicated = false;
           String resultString;

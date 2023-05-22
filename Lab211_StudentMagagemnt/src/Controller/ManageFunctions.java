@@ -3,7 +3,10 @@ package Controller;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -40,15 +43,40 @@ public class ManageFunctions {
         } catch (Exception e) {
             System.err.println("Load file error!");
         }
+        System.out.println("LOAD FILE SUCESSFUALLY!");
+    }
+    public void loadDataFromFile(ArrayList<Student> studentsList) {
+        studentsList.clear();
+        String path = Paths.get("").toAbsolutePath().toString();
+        loadData(path + "/src/Data/studentSource.txt", studentsList);
+        displayStudentsList("LIST OF STUDENT: ", studentsList);
     }
 
+    public void savaData(ArrayList<Student> studentsList) {
+        try {
+            String path = Paths.get("").toAbsolutePath().toString();
+			FileWriter wf = new FileWriter(path + "/src/Data/SavingData.txt");
+			for (Student student: studentsList) {
+				wf.write(student + System.lineSeparator());
+
+			}
+			wf.close();
+			System.out.println("Successfully wrote to the file!");
+        } catch (IOException e) {
+            System.out.println("AN ERROR OCCORED!");
+            e.printStackTrace();
+        }
+    }
+    public void saveDataToFile(ArrayList<Student> studentsList) {
+        savaData(studentsList);
+    }
     // add one student
     public void addStudentInformation(ArrayList<Student> studentsList) {
         String studentId = inputtFunctions.inputId("Enter student ID <D...>: ", studentsList);
         String studentName = inputtFunctions.inputName("Enter student name: ");
-        Integer semester = inputtFunctions.inputSesmeseter("Enter sesmester (0-9): ");
+        Integer sesmester = inputtFunctions.inputSesmeseter("Enter sesmester (0-9): ");
         String courseName = inputtFunctions.inputCourse("Enter student course (Java, .Net, C/C++): ");
-        Student student = new Student(studentId, studentName, semester);
+        Student student = new Student(studentId, studentName, sesmester);
         student.addCourse(courseName);
         student.calculateTotalOfCourse();
         studentsList.add(student);
@@ -75,7 +103,6 @@ public class ManageFunctions {
             }
         }
     }
-
     // find and sort student
     public ArrayList<Student> search(ArrayList<Student> studentsList, Predicate<Student> suPredicate) {
         ArrayList<Student> tempArrayList = new ArrayList<>();
@@ -91,7 +118,7 @@ public class ManageFunctions {
         });
         return tempArrayList;
     }
-
+    //update student
     public void updateStudent(Student student, ArrayList<Student> studentsList) {
         String[] eMenu = {
                 "Update Name",
@@ -103,14 +130,12 @@ public class ManageFunctions {
             public void execute(int number) {
                 switch (number) {
                     case 1:
-                        String newName = inputtFunctions
-                                .inputName("Old name: " + student.getStudentName() + ", New name: ");
+                        String newName = inputtFunctions.inputName("Old name: " + student.getStudentName() + ", New name: ");
                         student.setStudentName(newName);
                         System.out.println("Change sucessfull! => " + student);
                         break;
                     case 2:
-                        Integer newSesmester = inputtFunctions
-                                .inputSesmeseter("Old sesmester " + student.getSemester() + ", New sesmester: ");
+                        Integer newSesmester = inputtFunctions.inputSesmeseter("Old sesmester " + student.getSemester() + ", New sesmester: ");
                         student.setSemester(newSesmester);
                         System.out.println("Change sucessfull! => " + student);
                         break;
@@ -124,14 +149,12 @@ public class ManageFunctions {
                             public void execute(int number) {
                                 switch (number) {
                                     case 1:
-                                        String newCourse = inputtFunctions.inputCourse("Old course: "
-                                        + student.getCourseName() + ", New course (Java, .Net, C++): ", student);
+                                        String newCourse = inputtFunctions.inputCourse("Old course: " + student.getCourseName() + ", New course (Java, .Net, C++): ", student);
                                         student.addCourse(newCourse);
                                         student.calculateTotalOfCourse();
                                         break;
                                     case 2:
-                                        String delCourse = inputtFunctions.inputCourse("Old course: "
-                                                + student.getCourseName() + ", Delete course (Java, .Net, C++): ");
+                                        String delCourse = inputtFunctions.inputCourse("Old course: " + student.getCourseName() + ", Delete course (Java, .Net, C++): ");
                                         student.removeCourse(delCourse);
                                         student.calculateTotalOfCourse();
                                         break;
@@ -151,8 +174,8 @@ public class ManageFunctions {
             }
         };
         menu.run();
-    }
-
+    }   
+    //delete student
     public void deleteStudent(Student student, ArrayList<Student> studentsList) {
         studentsList.remove(student);
     }
@@ -183,7 +206,29 @@ public class ManageFunctions {
             displayStudentsList("LIST OF STUDENT AFTER DELETE STUDENT ID: " + searchId + " : ", studentsList);
         }
     }
-
+    public void loadDataAndSaveData(ArrayList<Student> studentsList) {
+            String[] options = {
+                "Load data from file",
+                "Save data to file 'SavingData.txt'"
+            };
+            Menu eMenu = new Menu("CHOOSE OPTION YOU NEED!", options) {
+                @Override
+                public void execute(int number) {
+                    switch(number) {
+                        case 1: 
+                            loadDataFromFile(studentsList);
+                            break;
+                        case 2:
+                            saveDataToFile(studentsList);
+                            break;
+                        default:
+                            System.out.println("Backed to main menu!");
+                            return;
+                    }
+                }
+            };
+            eMenu.run();
+    }
     public void displayStudentsList(String msg, ArrayList<Student> studentsList) {
         if (studentsList.isEmpty()) {
             System.out.println("LIST OF STUDENT IS EMPTY!");

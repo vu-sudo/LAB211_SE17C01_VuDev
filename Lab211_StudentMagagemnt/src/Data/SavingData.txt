@@ -1,0 +1,6 @@
+[studentId=D1, studentName=Phan Van A, semester=2, courseName=[Java, .Net, C/C++]]
+[studentId=D2, studentName=Nguyen Hoang B, semester=1, courseName=[.Net, C/C++]]
+[studentId=D3, studentName=Tran Huu C, semester=2, courseName=[Java, C/C++]]
+[studentId=D4, studentName=Lai Van D, semester=1, courseName=[Java, .Net]]
+[studentId=D5, studentName=Vo Van E, semester=2, courseName=[.Net, C/C++]]
+[studentId=D6, studentName=Hoang Van F, semester=1, courseName=[C/C++]]

@@ -9,6 +9,7 @@ public class ExecuteStudentManagement extends Menu {
     private static final Scanner input = new Scanner(System.in);
 
     static String[] menuOptions = {
+        "Load and Save Data(Bonus feature!)",
         "Create",
         "Find and Sort",
         "Update/Delete",
@@ -26,23 +27,26 @@ public class ExecuteStudentManagement extends Menu {
     @Override
     public void execute(int number) {
         switch(number) {
-            case 1: 
-                studentManageService.loadDataFromFile();
-                // studentManageService.handleAddStudents();
+            case 1:
+                studentManageService.handleLoadDataAndSaveData();
                 break;
             case 2: 
-                studentManageService.handleFindStudent();
+                studentManageService.handleAddStudents();
                 waitForPressAnyKey();
                 break;
             case 3: 
+                studentManageService.handleFindStudent();
+                waitForPressAnyKey();
+                break;
+            case 4: 
                 studentManageService.handleUpdateAndDelete();
                 waitForPressAnyKey();
                 break;
-            case 4:
+            case 5:
                 studentManageService.report();
                 waitForPressAnyKey();
                 break;
-            case 5: 
+            case 6: 
                 System.out.println("EXITED PROGRAM! THANKS FOR YOUR CHECKING!");
             default: 
                 System.exit(0);

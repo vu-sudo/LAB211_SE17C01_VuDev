@@ -19,6 +19,7 @@ import View.Menu;
 public class ManageFunctions {
     InputFunctions inputtFunctions = new InputFunctions();
     Validation validation = new Validation();
+    private boolean isLoadFile = false; 
 
     // lado data from file
     public void loadData(String fname, ArrayList<Student> studentsList) {
@@ -46,10 +47,14 @@ public class ManageFunctions {
         System.out.println("LOAD FILE SUCESSFUALLY!");
     }
     public void loadDataFromFile(ArrayList<Student> studentsList) {
-        studentsList.clear();
-        String path = Paths.get("").toAbsolutePath().toString();
-        loadData(path + "/src/Data/studentSource.txt", studentsList);
-        displayStudentsList("LIST OF STUDENT: ", studentsList);
+        if(isLoadFile) {
+            System.out.println("FILE IS LOADED! CANT LOAD AGAIN!");
+        } else {
+            String path = Paths.get("").toAbsolutePath().toString();
+            loadData(path + "/src/Data/studentSource.txt", studentsList);
+            isLoadFile = true;
+            displayStudentsList("LIST OF STUDENT: ", studentsList);
+        }
     }
 
     public void savaData(ArrayList<Student> studentsList) {
@@ -68,7 +73,11 @@ public class ManageFunctions {
         }
     }
     public void saveDataToFile(ArrayList<Student> studentsList) {
-        savaData(studentsList);
+        if(studentsList.isEmpty()) {
+            System.out.println("LIST OF STUDENT IS EMPTY!");
+        } else {
+            savaData(studentsList);
+        }
     }
     // add one student
     public void addStudentInformation(ArrayList<Student> studentsList) {
@@ -234,13 +243,13 @@ public class ManageFunctions {
             System.out.println("LIST OF STUDENT IS EMPTY!");
         } else {
             System.out.println("\n" + msg);
-            System.out.println("----------------------------------------------------------------");
-            System.out.format("| %5s | %15s | %8s | %22s | \n", "ID", "Student Name", "Sesmester", "Course");
-            System.out.println("----------------------------------------------------------------");
+            System.out.println("---------------------------------------------------------------------");
+            System.out.format("| %5s | %20s | %8s | %22s | \n", "ID", "Student Name", "Sesmester", "Course");
+            System.out.println("---------------------------------------------------------------------");
             for (Student student : studentsList) {
-                System.out.format("| %5s | %15s | %9d | %22s |\n", student.getStudentId(), student.getStudentName(),
+                System.out.format("| %5s | %20s | %9d | %22s |\n", student.getStudentId(), student.getStudentName(),
                         student.getSemester(), student.getCourseName());
-                System.out.println("----------------------------------------------------------------");
+                System.out.println("---------------------------------------------------------------------");
             }
         }
     }
@@ -250,15 +259,15 @@ public class ManageFunctions {
             System.out.println("LIST OF STUDENT IS EMPTY!");
         } else {
             System.out.println("\n" + msg);
-            System.out.println("-----------------------------------------------------------------------------");
-            System.out.format("| %5s | %15s | %8s | %22s | %10s |\n", "ID", "Student Name", "Sesmester", "Course",
+            System.out.println("----------------------------------------------------------------------------------");
+            System.out.format("| %5s | %20s | %8s | %22s | %10s |\n", "ID", "Student Name", "Sesmester", "Course",
                     "Total");
-            System.out.println("-----------------------------------------------------------------------------");
+            System.out.println("----------------------------------------------------------------------------------");
             for (Student student : studentsList) {
-                System.out.format("| %5s | %15s | %9d | %22s | %10d |\n", student.getStudentId(),
+                System.out.format("| %5s | %20s | %9d | %22s | %10d |\n", student.getStudentId(),
                         student.getStudentName(), student.getSemester(), student.getCourseName(),
                         student.getTotalCourse());
-                System.out.println("-----------------------------------------------------------------------------");
+                System.out.println("----------------------------------------------------------------------------------");
             }
         }
     }

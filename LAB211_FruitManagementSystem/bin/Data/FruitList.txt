@@ -1,0 +1,5 @@
+F1-Mango-3-20-VietNam
+F2-Orange-4-50-Jappan
+F3-Cherry-2-40-Australia
+F4-Guava-5-60-VietNam
+F5-Mangosteen-4-30-Chinese

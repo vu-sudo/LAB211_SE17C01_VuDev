@@ -13,6 +13,7 @@ public class FunctionLibrary {
             try {
                 System.out.print(msg);
                 doubleResult = Double.parseDouble(input.nextLine());
+                passed = true;
             } catch (NumberFormatException e) {
                 System.out.println("The Input must be a number!");
                 passed = false;

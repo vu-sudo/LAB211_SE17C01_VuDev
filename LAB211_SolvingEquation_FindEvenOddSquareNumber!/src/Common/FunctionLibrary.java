@@ -8,14 +8,16 @@ public class FunctionLibrary {
 
     public Double setNumber(String msg, String regex) {
         Double doubleResult = 0.0;
+        boolean passed = true;
         do {
             try {
                 System.out.print(msg);
                 doubleResult = Double.parseDouble(input.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("The Input must be a number!");
+                passed = false;
             }
-        } while (!validator.validatePattern(doubleResult.toString(), regex));
+        } while (!validator.validatePattern(doubleResult.toString(), regex) || passed == false);
         return doubleResult;
     }
     public Double setNumberCof(String msg, String regex) {

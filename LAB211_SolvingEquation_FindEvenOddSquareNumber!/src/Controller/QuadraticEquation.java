@@ -9,14 +9,7 @@ public class QuadraticEquation {
 
     public void handleSetQuadraticData() {
         Quadratic quadratic = new Quadratic();
-        double aValue = 0;
-        do {
-            aValue = functionLibrary.setNumber("Enter number A: ", "^[-+]?\\d*\\.?\\d+$");
-            if(aValue == 0) {
-                System.out.println("Number A must be greater than 0! Please try again!");
-            }
-        } while (aValue == 0);
-        quadratic.setFirstNumber(aValue);
+        quadratic.setFirstNumber(functionLibrary.setNumberCof("Enter number A: ", "^[-+]?\\d*\\.?\\d+$"));
         quadratic.setSecondNumber(functionLibrary.setNumber("Enter number B: ", "^[-+]?\\d*\\.?\\d+$"));
         quadratic.setThirdNumber(functionLibrary.setNumber("Enter number C: ", "^[-+]?\\d*\\.?\\d+$"));
         quadratic.calculateQuadraticResult();

@@ -18,6 +18,21 @@ public class FunctionLibrary {
         } while (!validator.validatePattern(doubleResult.toString(), regex));
         return doubleResult;
     }
+    public Double setNumberCof(String msg, String regex) {
+        Double doubleResult = 0.0;
+        do {
+            try {
+                System.out.print(msg);
+                doubleResult = Double.parseDouble(input.nextLine());
+                if(doubleResult == 0) {
+                    System.out.println("Number A is angle cofficient must be greater than 0! Please try again!");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("The Input must be a number!");
+            }
+        } while (!validator.validatePattern(doubleResult.toString(), regex) || doubleResult == 0);
+        return doubleResult;
+    }
     public boolean isPerfectSquareNumber(Double number) {
         double sqrt = Math.sqrt(number);
         int roundeSqrt = (int) sqrt;

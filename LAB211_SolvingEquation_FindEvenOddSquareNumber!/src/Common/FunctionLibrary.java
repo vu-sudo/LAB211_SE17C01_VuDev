@@ -25,7 +25,7 @@ public class FunctionLibrary {
                 System.out.print(msg);
                 doubleResult = Double.parseDouble(input.nextLine());
                 if(doubleResult == 0) {
-                    System.out.println("Number A is angle cofficient must be greater than 0! Please try again!");
+                    System.out.println("Number A is angle cofficient must be other than 0! Please try again!");
                 }
             } catch (NumberFormatException e) {
                 System.out.println("The Input must be a number!");

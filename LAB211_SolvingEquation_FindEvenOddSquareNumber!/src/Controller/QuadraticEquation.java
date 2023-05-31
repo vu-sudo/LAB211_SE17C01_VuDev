@@ -8,6 +8,7 @@ public class QuadraticEquation {
     FunctionLibrary functionLibrary = new FunctionLibrary();
 
     public void handleSetQuadraticData() {
+        System.out.println();
         Quadratic quadratic = new Quadratic();
         quadratic.setFirstNumber(functionLibrary.setNumberCof("Enter number A: ", "^[-+]?\\d*\\.?\\d+$"));
         quadratic.setSecondNumber(functionLibrary.setNumber("Enter number B: ", "^[-+]?\\d*\\.?\\d+$"));

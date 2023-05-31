@@ -8,8 +8,9 @@ public class SuperlativeEquation {
     FunctionLibrary functionLibrary = new FunctionLibrary();
 
     public void handleSetSuperlativeData() {
+        System.out.println();
         Superlative superlative = new Superlative();
-        superlative.setFirstNumber(functionLibrary.setNumber("Enter number A: ", "^[-+]?\\d*\\.?\\d+$"));
+        superlative.setFirstNumber(functionLibrary.setNumberCof("Enter number A: ", "^[-+]?\\d*\\.?\\d+$"));
         superlative.setSecondNumber(functionLibrary.setNumber("Enter number B: ", "^[-+]?\\d*\\.?\\d+$"));
         superlative.calculateSuperlativeEquationResult();
         superlativeData = superlative;

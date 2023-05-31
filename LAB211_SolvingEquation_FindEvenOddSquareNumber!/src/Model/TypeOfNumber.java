@@ -38,9 +38,9 @@ public class TypeOfNumber {
 
     @Override
     public String toString() {
-        return "Number is Odd: " + (this.odd.isEmpty() ? "Empty" : this.odd) + "\n"
-            +  "Number is Even: " + (this.even.isEmpty() ? "Empty" : this.even) + "\n"
-            +  "Number is Perfect Square: " + (this.perfect.isEmpty() ? "Empty" : this.perfect);
+        return "Odd " + (this.odd.size() == 1 ? "number is: " : "numbers are: ") + (this.odd.isEmpty() ? "Empty" : this.odd) + "\n"
+            +  "Even " + (this.even.size() == 1 ? "number is: " : "numbers are: ") + (this.even.isEmpty() ? "Empty" : this.even) + "\n"
+            +  "Perfect Square " + (this.perfect.size() == 1 ? "number is: " : "numbers are: ") + (this.perfect.isEmpty() ? "Empty" : this.perfect);
     }
     
 }   

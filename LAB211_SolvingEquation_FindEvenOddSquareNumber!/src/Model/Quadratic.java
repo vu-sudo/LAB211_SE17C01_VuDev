@@ -81,7 +81,7 @@ public class Quadratic {
         double discriminant = secondNumber * secondNumber - 4 * firstNumber * thirdNumber;
         if(discriminant > 0) {
             this.result.add( (double) Math.round((-secondNumber + Math.sqrt(discriminant)) / (2 * firstNumber)*1000)/1000 );
-            this.result.add( (double) Math.round(( secondNumber + Math.sqrt(discriminant)) / (2 * firstNumber)*1000)/1000 );
+            this.result.add( (double) Math.round((-secondNumber - Math.sqrt(discriminant)) / (2 * firstNumber)*1000)/1000 );
         } else if(discriminant == 0) {
             this.result.add( (double) Math.round( (-secondNumber / (2 * firstNumber)) *1000 ) / 1000 );
             this.result.add( (double) Math.round( (-secondNumber / (2 * firstNumber)) *1000 ) / 1000 );

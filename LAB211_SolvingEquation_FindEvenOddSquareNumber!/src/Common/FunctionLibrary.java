@@ -15,7 +15,7 @@ public class FunctionLibrary {
             } catch (NumberFormatException e) {
                 System.out.println("The Input must be a number!");
             }
-        } while (doubleResult == 0 || !validator.validatePattern(doubleResult.toString(), regex));
+        } while (!validator.validatePattern(doubleResult.toString(), regex));
         return doubleResult;
     }
     public boolean isPerfectSquareNumber(Double number) {

@@ -37,12 +37,6 @@ public class Superlative {
     public Double getFirstNumber() {
         return firstNumber;
     }
-    
-    @Override
-    public String toString() {
-        return "Solution: x = " + this.result + "\n"
-                + this.typeOfNumber;
-    }
     public Double getSecondNumber() {
         return secondNumber;
     }
@@ -67,4 +61,10 @@ public class Superlative {
             this.typeOfNumber.setPerfect(this.result);
         }
     }
+    @Override
+    public String toString() {
+        return "Solution: x = " + this.result + "\n"
+                + this.typeOfNumber;
+    }
+    
 }

@@ -24,6 +24,10 @@ public class Quadratic {
     public Double getThirdNumber() {
         return thirdNumber;
     }
+    public Quadratic() {
+        super();
+        this.result = new ArrayList<Double>();
+    }
     public void setFirstNumber(Double firstNumber) {
         this.firstNumber = firstNumber;
         if(firstNumber %2 == 0) {
@@ -34,11 +38,6 @@ public class Quadratic {
         if(functionLibrary.isPerfectSquareNumber(firstNumber)) {
             typeOfNumber.setPerfect(firstNumber);
         }
-    }
-    @Override
-    public String toString() {
-        return (!this.result.isEmpty() ? "Solution: " + "x1 = " + this.result.get(0) + ", x2 = " + this.result.get(1) : "Solution: The equation has no solution") +  "\n"
-        + this.typeOfNumber;
     }
     public void setSecondNumber(Double secondNumber) {
         this.secondNumber = secondNumber;
@@ -68,11 +67,6 @@ public class Quadratic {
             typeOfNumber.setPerfect(thirdNumber);
         }
     }
-
-    public Quadratic() {
-        super();
-        this.result = new ArrayList<Double>();
-    }
     public void setTypeOfNumber(TypeOfNumber typeOfNumber) {
         this.typeOfNumber = typeOfNumber;
     }
@@ -97,5 +91,10 @@ public class Quadratic {
             if(functionLibrary.isPerfectSquareNumber(this.result.get(0))) this.typeOfNumber.setPerfect(this.result.get(0));
             if(functionLibrary.isPerfectSquareNumber(this.result.get(1))) this.typeOfNumber.setPerfect(this.result.get(1));
        }
+    }
+    @Override
+    public String toString() {
+        return (!this.result.isEmpty() ? "Solution: " + "x1 = " + this.result.get(0) + ", x2 = " + this.result.get(1) : "Solution: The equation has no solution") +  "\n"
+        + this.typeOfNumber;
     }
 }

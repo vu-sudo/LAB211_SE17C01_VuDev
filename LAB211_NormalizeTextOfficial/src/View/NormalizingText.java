@@ -10,6 +10,7 @@ public class NormalizingText {
         normalizeService.handleNormalizeText();
         normalizeService.handleSaveDataToFile();
     }
+
     public static void main(String[] args) {
         NormalizingText normalizingText = new NormalizingText();
         normalizingText.run();

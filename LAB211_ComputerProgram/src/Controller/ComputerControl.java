@@ -80,6 +80,7 @@ public class ComputerControl {
         bmiComputer.setHeight(inputLibrary.setDoubleValue("Enter Height (cm): ", "^[-+]?\\d*\\.?\\d+$"));
         bmiComputer.setBmiNumber(functionsLibrary.calculateBMI(bmiComputer.getBodyWeight(), bmiComputer.getHeight()));
         bmiComputer.setStatus(functionsLibrary.returnStatus(bmiComputer.getBmiNumber()));
+        System.out.println("BMI: " +  bmiComputer.getBmiNumber());
         System.out.println("BMI Status: " + bmiComputer.getStatus());
     }
 }

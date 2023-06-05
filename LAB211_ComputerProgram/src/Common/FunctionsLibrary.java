@@ -25,7 +25,7 @@ public class FunctionsLibrary {
         }
     }
     public Double calculateBMI(Double weight, Double height) {
-        return weight / height*height;
+        return weight / (height/100*height/100);
     }
     public String returnStatus(Double BMINumber) {
         if(BMINumber < 19) {

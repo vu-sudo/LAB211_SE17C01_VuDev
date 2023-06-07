@@ -26,6 +26,7 @@ public class UserManageFunction {
         dataFuncions.saveDataToFileAppend(path + "/src/Data/user.dat", new User(userName, userPassWord));
         userList.clear();
     }
+    
     public void login(ArrayList<User> userList) {
         useLoadDataFromFile(userList);
         User checkingUser = inputLibrary.inputLogUserName("Enter user name: ", userList);
@@ -40,6 +41,7 @@ public class UserManageFunction {
         }
         userList.clear();
     }
+
     public boolean isSucessfullLogIn(User user, String pass) {
         if(user.getUserPassWord().equals(pass)) return true;
         return false;

@@ -45,9 +45,10 @@ public class InputLibrary {
         do {
             System.out.print(msg);
             resultString = input.nextLine().trim();
-            if(!validator.validatePattern(resultString, "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#&$])(?!.*\\s).{6,}$") || resultString.length() < 6) {
+            if(resultString.length() < 6) {
                 System.out.println("Invalid password! The password must be least at 6 character");
-                System.out.println("And contain number, one specical character!");
+            } else if(!validator.validatePattern(resultString, "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#&$])(?!.*\\s).{6,}$")) {
+                System.out.println("Invalid password! The password contain number, least at one specical character!");
             }
         } while(resultString.length() < 6 || !validator.validatePattern(resultString, "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#&$])(?!.*\\s).{6,}$"));
         return resultString;

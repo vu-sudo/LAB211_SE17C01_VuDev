@@ -24,7 +24,7 @@ public abstract class Menu {
     public Integer getChoice() {
         menuDisplay();
         int choice = 0;
-        System.out.println("Enter number's option: ");
+        System.out.print("Enter number's option: ");
         while(choice == 0) {
             try {
                 choice = Integer.parseInt(scan.nextLine());

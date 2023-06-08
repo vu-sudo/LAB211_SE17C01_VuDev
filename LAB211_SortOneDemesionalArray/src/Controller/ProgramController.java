@@ -53,6 +53,7 @@ public class ProgramController {
         System.out.println(integersList);
         System.out.println();
     }
+    
     public void displaySortedArray(String msg, String arrow) {
         if(integersList.isEmpty()) {
             System.out.println("List of integer number is empty! can't execute this function!");

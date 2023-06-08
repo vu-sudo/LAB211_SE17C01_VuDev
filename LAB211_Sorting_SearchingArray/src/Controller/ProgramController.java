@@ -14,6 +14,7 @@ public class ProgramController {
     private static  final Scanner scan = new Scanner(System.in);
 
     public Boolean isSorted = false;
+
     BubbleSort bubbleSort = new BubbleSort();
     QuickSort quickSort = new QuickSort();
     LinearSearch linearSearch = new LinearSearch();
@@ -44,15 +45,15 @@ public class ProgramController {
     }
     public Integer getNumber() {
         int number = -1;
-
-      do {
-          try{
-              System.out.println("Enter a positive number");
-              number = Integer.parseInt(scan.nextLine());
-          } catch (NumberFormatException e) {
-              System.err.println("Enter failed, pls enter again!");
-          }
-      } while (number < 0);
+        do {
+            try{
+                System.out.println("Enter a positive number");
+                number = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException e) {
+                System.err.println("Enter failed, pls enter again!");
+            }
+        } while (number < 0);
+        
         return  number;
     }
     public void executeBubbleSort() {

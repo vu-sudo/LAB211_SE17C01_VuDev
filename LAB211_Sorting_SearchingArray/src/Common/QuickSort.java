@@ -1,7 +1,6 @@
 package Common;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class QuickSort {
     public void quickSortFunction(ArrayList<Integer> arr, int left, int right) {

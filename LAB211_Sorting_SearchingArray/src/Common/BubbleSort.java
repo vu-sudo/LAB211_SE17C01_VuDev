@@ -7,7 +7,7 @@ public class BubbleSort {
         int number = integerArray.size();
         for (int i = 0; i < number - 1; i++) {
             for (int j = 0; j < number - i - 1; j++) {
-                if (integerArray.get(j) > integerArray.get(j + 1)) {
+                if (integerArray.get(j) < integerArray.get(j + 1)) {
                     int temp = integerArray.get(j);
                     integerArray.set(j, integerArray.get(j + 1));
                     integerArray.set(j + 1, temp);

@@ -1,0 +1,7 @@
+Nghia; Ha Noi; 1000.0
+Thanh; Da Nang; 2000.0
+Hoang; Ha Noi; 1000.0
+Vu; Quang Nam; 700.0
+Hoa; Ho Chi Minh; 800.0
+Khanh; Thanh Hoa; 2100.0
+Hoa; Quang Binh; 2100.0

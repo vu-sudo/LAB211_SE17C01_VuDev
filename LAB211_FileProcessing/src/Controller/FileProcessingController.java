@@ -17,19 +17,18 @@ public class FileProcessingController {
 
     public void handleLoadDataFromFile() {
         String[] options = {
-                "Load file from program default file",
-                "Manual input file to load!"
+            "Load file from program default file",
+            "Manual input file to load!"
         };
         Menu eMenu = new Menu("CHOOSE THE OPTION", options) {
 
             @Override
             public void execute(int number) {
-                switch (number) {
+                switch(number) {
                     case 1:
                         String path = Paths.get("").toAbsolutePath().toString();
                         funcionsLibrary.handleLoadDataFromFile(personList, path + "/src/Data/Persons.txt");
-                        Double leastMoney = inputFunctions.setDoubleValue("Enter least at money: ",
-                                "^[-+]?\\d*\\.?\\d+$");
+                        Double leastMoney = inputFunctions.setDoubleValue("Enter least at money: ", "^[-+]?\\d*\\.?\\d+$");
                         funcionsLibrary.handleFindPersons(personList, leastMoney);
                         break;
                     case 2:
@@ -42,53 +41,50 @@ public class FileProcessingController {
                         System.out.println("Backed to main menu!");
                 }
             }
-
-        };
-        eMenu.run();
+        
+        }; eMenu.run();
     }
-
     public void handleSaveDataToFile() {
 
         String[] options = {
-                "Import source file from program file",
-                "Manual import source file"
+            "Import source file from program file",
+            "Manual import source file"
         };
-        Menu eMenu = new Menu("CHOOSE THE OPTION", options) {
+       Menu eMenu = new Menu("CHOOSE THE OPTION", options) {
 
-            @Override
-            public void execute(int number) {
-                switch (number) {
-                    case 1:
-                        String path = Paths.get("").toAbsolutePath().toString();
-                        funcionsLibrary.handleLoadDataFromFile(personList, path + "/src/Data/Persons.txt");
-                        String inputNewFileName = inputFunctions.getStringValue("Enter new file name: ");
-                        String newFileName = path + "/src/Data/" + inputNewFileName;
-                        System.out.println("PATH: " + newFileName);
-                        funcionsLibrary.handleSaveCopy(personList, newFileName);
-                        break;
-                    case 2:
-                        String inputPath = inputFunctions.getStringValue("Enter Source: ");
-                        funcionsLibrary.handleLoadDataFromFile(personList, inputPath);
-                        inputNewFileName = inputFunctions.getStringValue("Enter new file name:");
+        @Override
+        public void execute(int number) {
+           switch(number) {
+                case 1:
+                    String path = Paths.get("").toAbsolutePath().toString();
+                    funcionsLibrary.handleLoadDataFromFile(personList, path + "/src/Data/Persons.txt");
+                    String inputNewFileName = inputFunctions.getStringValue("Enter new file name: ");
+                    String newFileName = path + "/src/Data/" + inputNewFileName; 
+                    System.out.println("PATH: " + newFileName);
+                    funcionsLibrary.handleSaveCopy(personList, newFileName);
+                    break;
+                case 2: 
+                    String inputPath = inputFunctions.getStringValue("Enter Source: ");
+                    funcionsLibrary.handleLoadDataFromFile(personList, inputPath);
+                    inputNewFileName = inputFunctions.getStringValue("Enter new file name:");
+                 
+                    String[] pathElements = inputPath.split("[/\\\\]");
+                    String fileName = pathElements[pathElements.length -1];
+                    String replaceFileName = fileName.replaceFirst("[^.]+$", inputNewFileName);                    
+                    // String replaceFileName = inputNewFileName;
 
-                        String[] pathElements = inputPath.split("[/\\\\]");
-                        String fileName = pathElements[pathElements.length - 1];
-                        String replaceFileName = fileName.replaceFirst("[^.]+$", inputNewFileName);
-                        // String replaceFileName = inputNewFileName;
+                    pathElements[pathElements.length - 1] = replaceFileName;
+                    String separator = inputPath.contains("/") ? "/" : "\\";
+                    String newFilePath = String.join(separator, pathElements);
 
-                        pathElements[pathElements.length - 1] = replaceFileName;
-                        String separator = inputPath.contains("/") ? "/" : "\\";
-                        String newFilePath = String.join(separator, pathElements);
-
-                        funcionsLibrary.handleSaveCopy(personList, newFilePath);
-                        break;
-                    default:
-                        System.out.println("Backed to main menu!");
-                }
-            }
-
-        };
-        eMenu.run();
+                    funcionsLibrary.handleSaveCopy(personList, newFilePath);
+                    break;
+                default: 
+                    System.out.println("Backed to main menu!");
+           }
+        }
+        
+       }; eMenu.run();
     }
-
+    
 }

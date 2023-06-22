@@ -1,0 +1,5 @@
+banana;qua chuoi
+banana fish;ca chuoi
+cat;con meo
+fish;con ca
+dog;con cho

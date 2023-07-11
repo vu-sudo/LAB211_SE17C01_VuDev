@@ -9,14 +9,17 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import Model.Translator;
 import Model.User;
 
 public class DataFuncions {
 
+    private Translator translator = new Translator();
+
     public void readDataFromFile(String fName, ArrayList<User> userList) {
         File file = new File(fName);
         if(!file.exists()) {
-            throw new RuntimeException("This file isn't exist!");
+            throw new RuntimeException(translator.translate("This_file_isn't_exist"));
         }
         String line = "";
         try {
@@ -42,7 +45,7 @@ public class DataFuncions {
             wf.close();
             // System.out.println("SUCESSFULLY WROTE TO THE FILE!");
         } catch (IOException e) {
-            System.out.println("AN ERROR OCCORED!");
+            System.out.println(translator.translate("AN_ERROR_OCCURED"));
             e.printStackTrace();
         }
     }
@@ -52,7 +55,7 @@ public class DataFuncions {
             writer.write(user.toString());
             writer.newLine();
         } catch(IOException e) {
-            System.out.println("AN ERROR OCCORED!");
+            System.out.println(translator.translate("AN_ERROR_OCCURED"));
             e.printStackTrace();
         }
     }

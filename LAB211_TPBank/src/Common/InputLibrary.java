@@ -2,14 +2,13 @@ package Common;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import Model.LanguageSwitcher;
+import Model.Translator;
 import Model.User;
 
 public class InputLibrary {
     private Validation validator = new Validation();
     private static final Scanner input = new Scanner(System.in);
-    LanguageSwitcher languageSwitcher = new LanguageSwitcher();
+    private Translator translator = new Translator();
 
     public User search(String string, ArrayList<User> userList) {
         string = string.trim();
@@ -27,7 +26,7 @@ public class InputLibrary {
     }
 
     // input userName;
-    public String inputUserName(String msg, ArrayList<User> userList) {
+    public String inputAccountNumber(String msg, ArrayList<User> userList) {
         boolean isDuplicated = false;
         String resultString;
         do {
@@ -36,14 +35,14 @@ public class InputLibrary {
             isDuplicated = isDuplicatedUser(resultString, userList);
             if (isDuplicated) {
                 // System.out.println("The user name is duplicated! try another!");
-                System.out.println(languageSwitcher.translate("The account number is duplicated! Try another!"));
+                System.out.println(translator.translate("The_account_number_is_duplicated_Try_another"));
 
-            } else if (!validator.validatePattern(resultString, "^(?=.*[a-z])(?=.*[A-Z])(?!.*\\s).+$")
-                    || resultString.length() < 5) {
-                System.out.println("You must enter least at 5 character, and no space, one character is upper!");
+            } else if (!validator.validatePattern(resultString, "\\d{10}")
+                    || resultString.length() != 10) {
+                System.out.println(translator.translate("Account_number_must_is_a_number_and_must_have_10_digits"));
             }
-        } while (isDuplicated == true || resultString.length() < 5
-                || !validator.validatePattern(resultString, "^(?=.*[a-z])(?=.*[A-Z])(?!.*\\s).+$"));
+        } while (isDuplicated == true || resultString.length() != 10
+                || !validator.validatePattern(resultString, "\\d{10}"));
         return resultString;
     }
 
@@ -53,40 +52,40 @@ public class InputLibrary {
         do {
             System.out.print(msg);
             resultString = input.nextLine().trim();
-            if (resultString.length() < 6) {
-                System.out.println("Invalid password! The password must be least at 6 character");
+            if (resultString.length() < 8 || resultString.length() > 31) {
+                System.out.println(translator.translate("Password_must_be_between_8_and_31_characters"));
             } else if (!validator.validatePattern(resultString,
-                    "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[.@#&$])(?!.*\\s).{6,}$")) {
-                System.out.println("Invalid password! The password contain number, least at one specical character!");
+                    "^(?=.*[0-9])(?=.*[a-zA-Z]).+$")) {
+                System.out.println(translator.translate("Password_must_be_between_8_and_31_characters_and_must_be_alphanumeric"));
             }
-        } while (resultString.length() < 6 || !validator.validatePattern(resultString,
-                "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[.@#&$])(?!.*\\s).{6,}$"));
+        } while (resultString.length() < 8 || resultString.length() > 31 || !validator.validatePattern(resultString,
+                "^(?=.*[0-9])(?=.*[a-zA-Z]).+$"));
         return resultString;
     }
 
     // input log user;
-    public User inputLogUserName(String msg, ArrayList<User> userList) {
+    public User inputLogAccount(String msg, ArrayList<User> userList) {
         String findString;
         User checkingUser = null;
         do {
             System.out.print(msg);
             findString = input.nextLine().trim();
 
-            if (!validator.validatePattern(findString, "^(?=.*[a-z])(?=.*[A-Z])(?!.*\\s).+$")
+            if (!validator.validatePattern(findString, "\\d{10}")
                     || findString.length() < 5) {
-                System.out.println("You must enter least at 5 character, and no space, one character is upper!");
+                System.out.println(translator.translate("Account_number_must_is_a_number_and_must_have_10_digits"));
             } else {
                 checkingUser = search(findString, userList);
             }
 
             if (checkingUser != null && checkingUser.getUserName().equals(findString)) {
-                System.out.println("FOUND USER: " + checkingUser.getUserName());
+                System.out.println(translator.translate("FOUND_USER") + checkingUser.getUserName());
             } else {
-                System.out.println("The user: " + findString + " NOT FOUND!");
+                System.out.println(translator.translate("The_user") + findString + translator.translate("NOT_FOUND"));
             }
 
         } while (findString.length() < 5
-                || !validator.validatePattern(findString, "^(?=.*[a-z])(?=.*[A-Z])(?!.*\\s).+$")
+                || !validator.validatePattern(findString, "\\d{10}")
                 || checkingUser == null);
         return checkingUser;
     };

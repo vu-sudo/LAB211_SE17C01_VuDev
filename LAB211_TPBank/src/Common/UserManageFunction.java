@@ -23,8 +23,7 @@ public class UserManageFunction {
 
     public void createNewUserAccount(ArrayList<User> userList) {
 
-        useLoadDataFromFile(userList);
-        // String userName = inputLibrary.inputUserName("Enter user name: ", userList);        
+        useLoadDataFromFile(userList);       
         String userName = inputLibrary.inputAccountNumber(translator.translate("Enter_user_name"), userList);
 
         String userPassWord = inputLibrary.inputPassWord(translator.translate("Enter_user_password"));

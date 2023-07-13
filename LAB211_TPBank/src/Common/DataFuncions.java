@@ -26,7 +26,7 @@ public class DataFuncions {
             try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(fName)))){
                 while ((line = bufferedReader.readLine()) != null) {
                     String[] lStrings = line.split(" - ");
-                    userList.add(new User(lStrings[0], lStrings[1]));
+                    if(lStrings.length > 0) userList.add(new User(lStrings[0], lStrings[1]));
                 }
             }
         } catch (Exception e) {
